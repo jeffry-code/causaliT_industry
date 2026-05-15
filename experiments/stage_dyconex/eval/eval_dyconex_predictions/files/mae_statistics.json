@@ -1,0 +1,37 @@
+{
+  "n_samples": 384,
+  "mae_overall": {
+    "mean": NaN,
+    "std": NaN,
+    "min": NaN,
+    "max": NaN
+  },
+  "mae_delta_A": {
+    "mean": NaN,
+    "std": NaN,
+    "min": NaN,
+    "max": NaN
+  },
+  "mae_delta_B": {
+    "mean": NaN,
+    "std": NaN,
+    "min": NaN,
+    "max": NaN
+  },
+  "best_fold": "k_3",
+  "checkpoint": "experiments/stage_dyconex/k_3/checkpoints/best_checkpoint.ckpt",
+  "best_samples": [
+    236,
+    22,
+    83,
+    361,
+    304
+  ],
+  "worst_samples": [
+    379,
+    370,
+    363,
+    353,
+    347
+  ]
+}

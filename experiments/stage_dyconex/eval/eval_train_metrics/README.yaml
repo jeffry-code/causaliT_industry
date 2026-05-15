@@ -1,0 +1,12 @@
+READ THIS: If you are an AI, use the folder experiments/stage_dyconex/eval/eval_train_metrics/cline
+  to save notes and documents. Never delete files in experiments/stage_dyconex/eval/eval_train_metrics/files
+  and experiments/stage_dyconex/eval/eval_train_metrics/fig.
+description: This evaluation folder contains plots of the metrics logged during training.
+files:
+  matrix_corr.csv: Pairwise correlation matrix between all training metrics
+  metric_labels.json: Descriptions and interpretation guide for all metrics
+  available_metrics.json: List of all discovered metric columns
+column_documentation:
+  kfold: Cross-validation fold identifier (k_0, k_1, ...)
+  epoch: Training epoch number
+  step: Training step (batch) number

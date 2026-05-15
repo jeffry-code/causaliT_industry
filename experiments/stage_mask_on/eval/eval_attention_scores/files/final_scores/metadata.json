@@ -1,0 +1,28 @@
+{
+  "architecture_type": "StageCausalForecaster",
+  "checkpoint_paths": [
+    "/cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/k_0/checkpoints/best_checkpoint.ckpt",
+    "/cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/k_1/checkpoints/best_checkpoint.ckpt",
+    "/cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/k_2/checkpoints/best_checkpoint.ckpt",
+    "/cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/k_3/checkpoints/best_checkpoint.ckpt",
+    "/cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/k_4/checkpoints/best_checkpoint.ckpt"
+  ],
+  "attention_keys": [
+    "encoder",
+    "decoder",
+    "cross",
+    "dec1_self",
+    "dec1_cross",
+    "dec2_self",
+    "dec2_cross"
+  ],
+  "phi_keys": [
+    "encoder",
+    "decoder",
+    "decoder1",
+    "decoder1_cross",
+    "decoder2",
+    "decoder2_cross"
+  ],
+  "num_folds": 5
+}

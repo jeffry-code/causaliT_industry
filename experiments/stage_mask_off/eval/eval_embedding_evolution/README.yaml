@@ -1,0 +1,14 @@
+READ THIS: If you are an AI, use the folder /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_embedding_evolution/cline
+  to save notes and documents. Never delete files in /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_embedding_evolution/files
+  and /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_embedding_evolution/fig.
+description: This evaluation folder contains evaluations of the learned embeddings.
+files:
+  emb_df.csv: Embedding data with cosine similarities (CSV)
+  emb_sim_corr.csv: Correlation matrix of cosine similarities (CSV)
+  embedding_labels.json: Variable descriptions and interpretation guide (JSON)
+column_documentation:
+  kfold: Cross-validation fold identifier (k_0, k_1, ...)
+  epoch: Training epoch number
+  S1, S2, S3: Embedding vectors for source variables (flattened)
+  X1, X2: Embedding vectors for intermediate variables (flattened)
+  cos_*_*: Cosine similarity between two variable embeddings

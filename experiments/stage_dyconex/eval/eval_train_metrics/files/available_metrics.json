@@ -1,0 +1,15 @@
+{
+  "discovered_pairs": [
+    "loss",
+    "loss_X",
+    "loss_Y",
+    "mae",
+    "mae_X",
+    "mae_Y",
+    "notears",
+    "r2_X",
+    "r2_Y"
+  ],
+  "total_pairs": 9,
+  "filters_applied": "none"
+}

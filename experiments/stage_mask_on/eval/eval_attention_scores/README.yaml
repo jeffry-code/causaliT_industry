@@ -1,0 +1,18 @@
+READ THIS: If you are an AI, use the folder /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/eval/eval_attention_scores/cline
+  to save notes and documents. Never delete files in /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/eval/eval_attention_scores/files
+  and /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_on/eval/eval_attention_scores/fig.
+description: This evaluation folder contains attention scores from test predictions
+  and DAG recovery metrics.
+files:
+  final_scores: Saved attention data (npz files) for fast reloading
+  scores_evol.csv: Attention scores evolution over training epochs (CSV)
+  dag_metrics.json: Soft Hamming distance comparing learned DAG to true DAG (JSON)
+  attention_labels.json: Descriptions of attention blocks and interpretation guide
+    (JSON)
+column_documentation:
+  kfold: Cross-validation fold identifier (k_0, k_1, ...)
+  epoch: Training epoch number
+  '{block}_{i}{j}_mean': Mean attention from source j to target i (averaged across
+    samples)
+  '{block}_{i}{j}_diff_mean': Change in attention from initialization
+  phi_{block}_{i}{j}: Learned DAG probability for edge j→i

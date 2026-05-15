@@ -1,0 +1,56 @@
+{
+  "target": "A",
+  "checkpoint_path": "C:\\Users\\jeffr\\Documents\\Masterarbeit\\causaliT\\experiments\\stage_dyconex\\k_3\\checkpoints\\best_checkpoint.ckpt",
+  "best_fold": "k_3",
+  "variable_ids": [
+    1,
+    2,
+    3
+  ],
+  "variable_names": {
+    "1": "mul_10",
+    "2": "mul_103",
+    "3": "mul_104"
+  },
+  "n_iters": 3,
+  "objective_window": "all",
+  "baseline_score": 0.2085890769958496,
+  "best_score": 0.22280685603618622,
+  "improvement_abs": 0.014217779040336609,
+  "improvement_rel_pct": 6.816166620532744,
+  "best_interventions": {
+    "1": 0.6973680290593639,
+    "2": 0.09417734788764953,
+    "3": 0.9756223516367559
+  },
+  "history_top5": [
+    {
+      "iter": 1,
+      "score": 0.22280685603618622,
+      "v1": 0.6973680290593639,
+      "v2": 0.09417734788764953,
+      "v3": 0.9756223516367559
+    },
+    {
+      "iter": 2,
+      "score": 0.2214253693819046,
+      "v1": 0.761139701990353,
+      "v2": 0.7860643052769538,
+      "v3": 0.12811363267554587
+    },
+    {
+      "iter": 0,
+      "score": 0.22119900584220886,
+      "v1": 0.7739560485559633,
+      "v2": 0.4388784397520523,
+      "v3": 0.8585979199113825
+    },
+    {
+      "iter": -1,
+      "score": 0.2085890769958496,
+      "v1": NaN,
+      "v2": NaN,
+      "v3": NaN
+    }
+  ]
+}

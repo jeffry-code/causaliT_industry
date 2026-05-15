@@ -1,0 +1,134 @@
+version: "StageCausaliT_mask_on"
+
+model:
+  model_object: "StageCausaliT"
+
+  embed_dim:
+    d_model: 12
+    var_emb_hidden: 11
+
+  kwargs:
+    model: ${model.model_object}
+    comps_embed_shared: "concat"
+
+    ds_embed_shared:
+      setting:
+        d_model: ${model.embed_dim.d_model}
+      modules:
+        - idx: 0
+          embed: "identity"
+          label: "value"
+          kwargs: {}
+        - idx: 1
+          embed: "nn_embedding"
+          label: "variable"
+          kwargs:
+            num_embeddings: 8
+            embedding_dim: ${model.embed_dim.var_emb_hidden}
+            padding_idx: 0
+        - idx: 0
+          embed: "mask"
+          label: "value_missing"
+          kwargs: {}
+
+    # IMPORTANT: cross-attention must support rectangular shapes (L != S)
+    dec1_cross_attention_type: "CausalCrossAttention"
+    dec1_cross_mask_type: "Uniform"
+    dec1_self_attention_type: "ScaledDotProduct"
+    dec1_self_mask_type: "Uniform"
+
+    dec2_cross_attention_type: "CausalCrossAttention"
+    dec2_cross_mask_type: "Uniform"
+    dec2_self_attention_type: "ScaledDotProduct"
+    dec2_self_mask_type: "Uniform"
+
+    n_heads: 1
+    dec1_causal_mask: true
+    dec2_causal_mask: true
+
+    d1_layers: 1
+    d2_layers: 1
+    activation: "gelu"
+    norm: "layer"
+    use_final_norm: true
+    device: "cuda"
+
+    out_dim: 1
+    d_ff: 128
+    d_model: ${model.embed_dim.d_model}
+    d_qk: 16
+
+    S_seq_len: 3
+    X_seq_len: 2
+    Y_seq_len: 2
+
+    dropout_emb: 0.1
+    dropout_attn_out: 0.1
+    dropout_ff: 0.1
+
+    dec1_cross_dropout_qkv: 0.1
+    dec1_cross_attention_dropout: 0.0
+    dec1_self_dropout_qkv: 0.1
+    dec1_self_attention_dropout: 0.0
+
+    dec2_cross_dropout_qkv: 0.1
+    dec2_cross_attention_dropout: 0.0
+    dec2_self_dropout_qkv: 0.1
+    dec2_self_attention_dropout: 0.0
+
+training:
+  optimizer: "adamw"
+  lr: 0.0001
+  weight_decay: 0.01
+  use_scheduler: false
+
+  loss_fn: "mse"
+  loss_weight_x: 1.0
+  loss_weight_y: 1.0
+  teacher_forcing: true
+
+  batch_size: 64
+  max_epochs: 200
+  k_fold: 5
+  seed: 42
+  save_ckpt_every_n_epochs: 50
+
+  log_entropy: true
+  log_acyclicity: true
+  gamma: 0.0
+  kappa: 0.0
+  freeze_embeddings: false
+
+  use_hard_masks: false
+  hard_mask_files:
+    dec1_cross: "dec1_cross_att_mask.csv"
+    dec1_self: "dec1_self_att_mask.csv"
+    dec2_cross: "dec2_cross_att_mask.csv"
+    dec2_self: "dec2_self_att_mask.csv"
+
+data:
+  dataset: "scm6_mask_test"
+  filename_input: "ds.npz"
+  val_idx: 0
+
+  # required by forecaster hard-mask placeholder logic
+  S_seq_len: 3
+  X_seq_len: 2
+  Y_seq_len: 2
+
+  features:
+    S:
+      value: 0
+      variable: 1
+    X:
+      value: 0
+      variable: 1
+    Y:
+      value: 0
+      variable: 1
+
+  max_data_size: null
+  test_ds_ixd: null
+
+special:
+  mode: []

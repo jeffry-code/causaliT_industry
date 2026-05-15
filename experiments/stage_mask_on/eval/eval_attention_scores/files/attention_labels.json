@@ -1,0 +1,37 @@
+{
+  "description": "Attention weights and DAG (phi) structure learned by the model",
+  "attention_blocks": {
+    "SingleCausalForecaster": {
+      "dec_cross": "Cross-attention: S \u2192 X (source variables influence intermediate variables)",
+      "dec_self": "Self-attention: X \u2192 X (intermediate variables influence each other)"
+    },
+    "StageCausalForecaster": {
+      "dec1_cross": "Stage 1 Cross-attention: S \u2192 X (source to intermediate)",
+      "dec1_self": "Stage 1 Self-attention: X \u2192 X (intermediate to intermediate)",
+      "dec2_cross": "Stage 2 Cross-attention: X \u2192 Y (intermediate to output)",
+      "dec2_self": "Stage 2 Self-attention: Y \u2192 Y (output to output)"
+    },
+    "TransformerForecaster": {
+      "encoder": "Encoder self-attention",
+      "decoder": "Decoder self-attention",
+      "cross": "Decoder cross-attention (encoder \u2192 decoder)"
+    }
+  },
+  "phi_tensors": {
+    "description": "Learned DAG edge probabilities (sigmoid(phi)). Values in [0,1] where 1 = edge present.",
+    "interpretation": "phi is learned by LieAttention and CausalCrossAttention modules"
+  },
+  "dag_metrics": {
+    "soft_hamming": "Mean absolute difference between learned and true DAG. 0 = perfect, 1 = inverted",
+    "source": "'phi' if LieAttention/CausalCrossAttention used, else 'attention' (mean attention scores)"
+  },
+  "matrix_indexing": {
+    "rows": "Target variables (queries) - the variables being predicted",
+    "columns": "Source variables (keys) - the variables providing information",
+    "value_ij": "Attention weight from source j to target i (how much target i attends to source j)"
+  },
+  "variable_mapping": {
+    "note": "No variable mapping defined for dataset 'scm6_mask_test'. Add to DATASET_VARIABLE_MAPPINGS."
+  },
+  "dataset": "scm6_mask_test"
+}

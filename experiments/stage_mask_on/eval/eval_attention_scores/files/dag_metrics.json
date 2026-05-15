@@ -1,0 +1,19 @@
+{
+  "dataset": "scm6_mask_test",
+  "architecture": "StageCausalForecaster",
+  "soft_hamming_cross": {
+    "best": 0.46955980360507965,
+    "mean": 0.4897857666015625,
+    "worst": 0.49995844066143036,
+    "std": 0.011150047970638005,
+    "per_fold": {
+      "k_0": 0.46955980360507965,
+      "k_1": 0.4983837977051735,
+      "k_2": 0.48638665676116943,
+      "k_3": 0.49464013427495956,
+      "k_4": 0.49995844066143036
+    }
+  },
+  "soft_hamming_cross_source": "phi",
+  "dag_confidence_cross": 0.827846884727478
+}

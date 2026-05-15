@@ -1,0 +1,19 @@
+READ THIS: If you are an AI, use the folder /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_do/default/cline
+  to save notes and documents. Never delete files in /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_do/default/files
+  and /cluster/home/josephj/Masterarbeit/causaliT_new/experiments/stage_mask_off/eval/eval_do/default/fig.
+description: This evaluation folder contains predictions of the model under interventions
+files:
+  do.csv: Raw predictions for all samples × interventions × folds
+  do_summary.csv: Aggregated statistics (mean, std) of deviations per intervention
+    × variable
+  variable_labels.json: Mapping from numeric trg_feat_1 to variable names (S1, X1,
+    etc.)
+column_documentation:
+  sample_idx: Sample index in dataset
+  pos_idx: Position index within sequence (corresponds to variable)
+  pred_feat_0: Predicted value
+  trg_feat_0: Target value (ground truth)
+  trg_feat_1: Variable ID (see variable_labels.json for mapping)
+  kfold: Cross-validation fold identifier
+  checkpoint_name: Model checkpoint file used
+  intervention: Intervention applied ('baseline' or 'S1=0', 'S2=1', etc.)

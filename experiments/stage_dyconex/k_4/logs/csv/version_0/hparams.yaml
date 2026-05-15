@@ -1,0 +1,356 @@
+version: StageCausaliT_1.1
+experiment:
+  d_model_set: 100
+  d1_layers: 1
+  d2_layers: 1
+  n_heads: 1
+  d_ff: 200
+  d_qk: 100
+  dropout: 0.1
+  lr: 0.0001
+  batch_size: 50
+  max_epochs: 500
+  loss_weight_x: 1.0
+  loss_weight_y: 1.0
+model:
+  model_object: StageCausaliT
+  embed_dim:
+    d_model_set: 100
+    s_pro_emb_hidden: 100
+    s_occ_emb_hidden: 100
+    s_step_emb_hidden: 100
+    s_var_emb_hidden: 100
+    s_val_emb_hidden: 100
+    s_time_emb_hidden: 100
+    x_pro_emb_hidden: 100
+    x_occ_emb_hidden: 100
+    x_step_emb_hidden: 100
+    x_var_emb_hidden: 100
+    x_val_emb_hidden: 100
+    x_time_emb_hidden: 100
+    y_var_emb_hidden: 100
+    y_val_emb_hidden: 100
+    y_pos_emb_hidden: 100
+    y_time_emb_hidden: 100
+  kwargs:
+    model: StageCausaliT
+    use_independent_embeddings: true
+    val_idx_X: 5
+    comps_embed_S: summation
+    ds_embed_S:
+      setting:
+        d_model: 100
+        sparse_grad: false
+      modules:
+      - idx: 1
+        embed: nn_embedding
+        label: process
+        kwargs:
+          num_embeddings: 3
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 2
+        embed: nn_embedding
+        label: occurrence
+        kwargs:
+          num_embeddings: 5
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 3
+        embed: nn_embedding
+        label: step
+        kwargs:
+          num_embeddings: 3
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 4
+        embed: nn_embedding
+        label: variable
+        kwargs:
+          num_embeddings: 53
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 5
+        embed: linear
+        label: value
+        kwargs:
+          input_dim: 1
+          embedding_dim: 100
+      - idx: 5
+        embed: mask
+        label: value_missing
+        kwargs: {}
+      - idx: 6
+        embed: pass
+        label: order
+        kwargs: {}
+      - idx:
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        embed: time2vec
+        label: time
+        kwargs:
+          input_dim: 5
+          embed_dim: 100
+    comps_embed_X: summation
+    ds_embed_X:
+      setting:
+        d_model: 100
+        sparse_grad: false
+      modules:
+      - idx: 1
+        embed: nn_embedding
+        label: process
+        kwargs:
+          num_embeddings: 3
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 2
+        embed: nn_embedding
+        label: occurrence
+        kwargs:
+          num_embeddings: 5
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 3
+        embed: nn_embedding
+        label: step
+        kwargs:
+          num_embeddings: 3
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 4
+        embed: nn_embedding
+        label: variable
+        kwargs:
+          num_embeddings: 78
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 5
+        embed: linear
+        label: value
+        kwargs:
+          input_dim: 1
+          embedding_dim: 100
+      - idx: 5
+        embed: mask
+        label: value_missing
+        kwargs: {}
+      - idx: 6
+        embed: pass
+        label: order
+        kwargs: {}
+      - idx:
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        embed: time2vec
+        label: time
+        kwargs:
+          input_dim: 5
+          embed_dim: 100
+    comps_embed_Y: summation
+    ds_embed_Y:
+      setting:
+        d_model: 100
+        sparse_grad: false
+      modules:
+      - idx: 2
+        embed: nn_embedding
+        label: variable
+        kwargs:
+          num_embeddings: 3
+          embedding_dim: 100
+          padding_idx: 0
+          sparse: false
+          max_norm: 1
+      - idx: 1
+        embed: sinusoidal
+        label: position
+        kwargs:
+          max_pos: 500
+          embed_dim: 100
+      - idx: 3
+        embed: linear
+        label: value
+        kwargs:
+          input_dim: 1
+          embedding_dim: 100
+      - idx: 3
+        embed: mask
+        label: value_missing
+        kwargs: {}
+      - idx: 1
+        embed: pass
+        label: order
+        kwargs: {}
+      - idx:
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        embed: time2vec
+        label: time
+        kwargs:
+          input_dim: 5
+          embed_dim: 100
+    dec1_cross_attention_type: ScaledDotProduct
+    dec1_cross_mask_type: Uniform
+    dec1_self_attention_type: ScaledDotProduct
+    dec1_self_mask_type: Uniform
+    dec2_cross_attention_type: ScaledDotProduct
+    dec2_cross_mask_type: Uniform
+    dec2_self_attention_type: ScaledDotProduct
+    dec2_self_mask_type: Uniform
+    n_heads: 1
+    dec1_causal_mask: false
+    dec2_causal_mask: false
+    d1_layers: 1
+    d2_layers: 1
+    activation: gelu
+    norm: layer
+    use_final_norm: true
+    device: cuda
+    out_dim: 1
+    d_ff: 200
+    d_model: 100
+    d_qk: 100
+    S_seq_len: 106
+    X_seq_len: 173
+    Y_seq_len: 400
+    dropout_emb: 0.1
+    dropout_attn_out: 0.1
+    dropout_ff: 0.1
+    dec1_cross_dropout_qkv: 0.1
+    dec1_cross_attention_dropout: 0.1
+    dec1_self_dropout_qkv: 0.1
+    dec1_self_attention_dropout: 0.1
+    dec2_cross_dropout_qkv: 0.1
+    dec2_cross_attention_dropout: 0.1
+    dec2_self_dropout_qkv: 0.1
+    dec2_self_attention_dropout: 0.1
+training:
+  optimizer: adamw
+  lr: 0.0001
+  weight_decay: 0.01
+  use_scheduler: false
+  loss_fn: mse
+  loss_weight_x: 1.0
+  loss_weight_y: 1.0
+  teacher_forcing: true
+  batch_size: 50
+  max_epochs: 500
+  k_fold: 5
+  seed: 42
+  save_ckpt_every_n_epochs: 100
+  log_entropy: false
+  log_acyclicity: true
+  gamma: 0.0
+  kappa: 0.0
+  log_jacobian: false
+  jacobian_every_n_epochs: 1
+  use_hard_masks: false
+  use_in_context_masks: true
+  in_context_mask_config:
+    dec1_cross:
+      causal: true
+      category: true
+      order_idx_q: 6
+      order_idx_k: 6
+      category_idx:
+      - 1
+      - 2
+      - 3
+    dec1_self:
+      causal: true
+      order_idx: 6
+    dec2_cross:
+      causal: true
+      order_idx_q: 1
+      order_idx_k: 6
+    dec2_self:
+      causal: true
+      order_idx: 1
+data:
+  dataset: ds_dyconex_SX_MuMi_260302
+  train_file: train_data.npz
+  test_file: test_data.npz
+  filename_input: null
+  val_idx_X: 5
+  val_idx_Y: 3
+  test_ds_ixd: null
+  max_data_size: null
+  S_seq_len: 106
+  X_seq_len: 173
+  Y_seq_len: 400
+  features:
+    S:
+      group: 0
+      process: 1
+      occurrence: 2
+      step: 3
+      variable: 4
+      value: 5
+      order: 6
+      time:
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+    X:
+      group: 0
+      process: 1
+      occurrence: 2
+      step: 3
+      variable: 4
+      value: 5
+      order: 6
+      time:
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+    'Y':
+      group: 0
+      position: 1
+      variable: 2
+      value: 3
+      time:
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+special:
+  mode: []
+evaluation:
+  functions:
+  - fix_kfold_summary
+  - enrich_kfold_summary
+  - eval_train_metrics
+  - eval_metrics
+  - eval_dyconex_predictions

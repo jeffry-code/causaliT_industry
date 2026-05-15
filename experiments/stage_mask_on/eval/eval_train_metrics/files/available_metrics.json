@@ -1,0 +1,19 @@
+{
+  "discovered_pairs": [
+    "dec1_cross_entropy",
+    "dec1_self_entropy",
+    "dec2_cross_entropy",
+    "dec2_self_entropy",
+    "loss",
+    "loss_X",
+    "loss_Y",
+    "mae",
+    "mae_X",
+    "mae_Y",
+    "notears",
+    "r2_X",
+    "r2_Y"
+  ],
+  "total_pairs": 13,
+  "filters_applied": "none"
+}

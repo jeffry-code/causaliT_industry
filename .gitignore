@@ -1,0 +1,8 @@
+/venv
+/.venv
+/data
+/logs
+/report
+__pycache__/
+*.egg-info/
+*.ckpt

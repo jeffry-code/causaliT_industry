@@ -1,0 +1,23 @@
+{
+  "description": "Embedding evolution analysis - tracking cosine similarities between variable embeddings during training",
+  "interpretation": {
+    "high_cosine_similarity": "Variables with similar embeddings are expected to have causal relationships",
+    "low_cosine_similarity": "Variables with orthogonal embeddings should not have direct causal edges",
+    "evolution_over_epochs": "Embeddings typically start random and converge to reflect causal structure"
+  },
+  "embedding_types": {
+    "embedding_S": "Source variable embeddings (OrthogonalMaskEmbedding for SingleCausal)",
+    "embedding_X": "Intermediate variable embeddings (ModularEmbedding)"
+  },
+  "column_documentation": {
+    "kfold": "Cross-validation fold identifier (k_0, k_1, ...)",
+    "epoch": "Training epoch number",
+    "S1, S2, S3": "Embedding vectors for source variables (flattened)",
+    "X1, X2": "Embedding vectors for intermediate variables (flattened)",
+    "cos_*_*": "Cosine similarity between two variable embeddings"
+  },
+  "variable_mapping": {
+    "note": "No variable mapping defined for dataset 'scm6_mask_test'. Add to DATASET_EMBEDDING_MAPPINGS."
+  },
+  "dataset": "scm6_mask_test"
+}

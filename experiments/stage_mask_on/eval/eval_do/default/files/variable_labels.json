@@ -1,0 +1,21 @@
+{
+  "trg_feat_1_to_name": {
+    "1": "S1",
+    "2": "S2",
+    "3": "S3",
+    "4": "X1",
+    "5": "X2",
+    "6": "Y1",
+    "7": "Y2"
+  },
+  "trg_feat_1_to_latex": {
+    "1": "$S_1$",
+    "2": "$S_2$",
+    "3": "$S_3$",
+    "4": "$X_1$",
+    "5": "$X_2$",
+    "6": "$Y_1$",
+    "7": "$Y_2$"
+  },
+  "description": "Maps numeric trg_feat_1 values to variable names"
+}

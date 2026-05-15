@@ -1,0 +1,10 @@
+READ THIS: If you are an AI, use the folder experiments/stage_dyconex/eval/eval_dyconex_predictions/cline
+  to save notes. Never delete files in experiments/stage_dyconex/eval/eval_dyconex_predictions/files
+  and experiments/stage_dyconex/eval/eval_dyconex_predictions/fig.
+description: 'Dyconex prediction evaluation: MAE statistics and best/worst sample
+  plots'
+files:
+  mae_statistics.json: Per-variable and overall MAE statistics
+  sample_ranking.csv: All samples ranked by average MAE
+  best_sample_*.pdf: Plots of 5 best predictions
+  worst_sample_*.pdf: Plots of 5 worst predictions
